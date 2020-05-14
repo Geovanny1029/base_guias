@@ -95,6 +95,16 @@ class RegistroController extends Controller
             }
     }
 
+    public function viewnu(Request $request){
+        if($request->ajax()){
+                $id = $request->id;
+                $info = Registros::find($id);
+                $aerolinea = Aerolinea::find($info->id_aerolinea);
+                $agente = Agente::find($info->id_agente);
+                return response()->json(array('info'=>$info,'aerolinea'=>$aerolinea,'agente'=>$agente));
+
+            }
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -140,6 +150,24 @@ class RegistroController extends Controller
         return back()->with($notification);
     }
 
+
+    public function actualizanu(Request $request){
+
+        $id = $request->edit_idnu;
+        $data= Registros::find($id);
+        $data->fact_sci=strtoupper($request->edit_fact_scinu);
+        $data->periodo_cass=strtoupper($request->edit_periodo_cassnu);
+        $data->ref_sci=strtoupper($request->edit_ref_scinu);
+        $data->id_usuario=Auth::User()->id;
+        $data->save();
+
+        $notification = array(
+        'message' => 'El Registro ha Actualizado Exitosamente', 
+        'alert-type' => 'success'
+        );        
+
+        return back()->with($notification);
+    }
     /**
      * Remove the specified resource from storage.
      *

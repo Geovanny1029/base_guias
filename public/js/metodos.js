@@ -81,6 +81,48 @@ function fun_editr(id)
       });
     }
 
+//vista editar Registro nivel usuario
+function fun_editnu(id)
+    {
+      var view_url = $("#editnu").val();
+      $.ajax({
+        url: view_url,
+        type:"GET", 
+        data: {"id":id}, 
+        success: function(result){
+          //console.log(result);
+          if(result.info.fact_sci == null || result.info.fact_sci == ""){
+            $('#edit_fact_scinu').attr('readonly', false);
+             $("#edit_fact_scinu").val(result.info.fact_sci);
+          }else{
+            $('#edit_fact_scinu').attr('readonly', true);
+            $("#edit_fact_scinu").val(result.info.fact_sci);
+          }
+
+          if(result.info.periodo_cass == null || result.info.periodo_cass == ""){
+            $('#edit_periodo_cassnu').attr('readonly', false);
+            $("#edit_periodo_cassnu").val(result.info.periodo_cass);
+          }else{
+            $('#edit_periodo_cassnu').attr('readonly', true);
+            $("#edit_periodo_cassnu").val(result.info.periodo_cass);
+          }
+
+
+          if(result.info.ref_sci == null || result.info.ref_sci == ""){
+            $('#edit_ref_scinu').attr('readonly', false);
+            $("#edit_ref_scinu").val(result.info.ref_sci); 
+          }else{
+            $('#edit_ref_scinu').attr('readonly', true);
+            $("#edit_ref_scinu").val(result.info.ref_sci);          
+          }
+          
+          
+          
+          $("#edit_idnu").val(result.info.id);
+        }
+      });
+    }
+
 $(document).ready(function(){
   $('#tablaregistros thead th').each( function () {
     var title = $(this).text();

@@ -17,10 +17,7 @@
     <th>Factura SCI</th>
     <th>Periodo Cass</th>
     <th>Referencia SCI</th>
-    @if(Auth::User()->nivel == 1)
     <th>Accion</th>
-    @else
-    @endif
   </thead>
   <tbody>
     @foreach($registros as $reg)
@@ -31,9 +28,27 @@
       <td> {{$reg->guia}} </td>
       <td> {{$reg->fecha_asignacion}} </td>
       <td> {{$reg->agente->nombre_agente}}</td>
-      <td> {{$reg->fact_sci}} </td>
-      <td> {{$reg->periodo_cass}} </td>
-      <td> {{$reg->ref_sci}} </td>
+      <td>
+        @if($reg->fact_sci == null || $reg->fact_sci == "")
+          <span class="label label-danger">VACIO</span>
+        @else
+          {{$reg->fact_sci}}
+        @endif
+      </td>
+      <td> 
+        @if($reg->periodo_cass == null || $reg->periodo_cass == "")
+          <span class="label label-danger">VACIO</span>
+        @else
+          {{$reg->periodo_cass}}
+        @endif 
+      </td>
+      <td> 
+        @if($reg->ref_sci == null or $reg->ref_sci == "")
+          <span class="label label-danger">VACIO</span>
+        @else
+          {{$reg->ref_sci}}
+        @endif 
+      </td>
     
       @if(Auth::User()->nivel == 1)
       <td>
@@ -53,12 +68,22 @@
 
       </td>      
       @else
+        @if($reg->fact_sci != null && $reg->periodo_cass != null && $reg->ref_sci != null )
+        <td>
+          <span class="label label-success">COMPLETO</span>
+        </td>
+        @else
+      <td>
+        <button class="btn btn-warning" data-toggle="modal" data-target="#editModalNU" onclick="fun_editnu('{{$reg->id}}')"  id="editnu" value="{{route('registro.viewnu')}}"><i class="icon_pencil-edit"></i> </button>
+      </td>
+        @endif
       @endif
     </tr>
     @endforeach
   </tbody>
 
   @include('registros.edit')
+  @include('registros.editnu')
 </table>
 
 

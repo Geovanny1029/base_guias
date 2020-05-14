@@ -35,15 +35,15 @@
               <div class="row">
                 <div class="form-group col-md-4">
                  {!! Form::label('Fact SCI', 'Fact SCI') !!} 
-                 {!! Form::text('fact_sci',null,['class' => 'form-control','style' => 'text-transform:uppercase;' , 'placeholder' => 'fact', 'required' ] ) !!}
+                 {!! Form::text('fact_sci',null,['class' => 'form-control','style' => 'text-transform:uppercase;' , 'placeholder' => 'fact'] ) !!}
                </div>
                <div class="form-group col-md-4">
                  {!! Form::label('Periodo Cass', 'Periodo Cass') !!} 
-                 {!! Form::text('periodo_cass',null,['class' => 'form-control','style' => 'text-transform:uppercase;' , 'placeholder' => 'periodo', 'required' ] ) !!}
+                 {!! Form::text('periodo_cass',null,['class' => 'form-control','style' => 'text-transform:uppercase;' , 'placeholder' => 'periodo' ] ) !!}
                </div>
                <div class="form-group col-md-4">
                  {!! Form::label('Ref SCI', 'Ref SCI') !!} 
-                 {!! Form::text('ref_sci',null,['class' => 'form-control','style' => 'text-transform:uppercase;' , 'placeholder' => 'Ref', 'required' ] ) !!}
+                 {!! Form::text('ref_sci',null,['class' => 'form-control','style' => 'text-transform:uppercase;' , 'placeholder' => 'Ref' ] ) !!}
                </div>
               </div>
 

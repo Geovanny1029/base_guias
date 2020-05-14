@@ -44,11 +44,21 @@ Route::get('registroe',[
 			'as'   => 'registro.view'
 ]);
 
+Route::get('registronu',[
+			'uses' => 'RegistroController@viewnu',
+			'as'   => 'registro.viewnu'
+]);
+
 Route::post('registrou',[
 			'uses' => 'RegistroController@actualiza',
 			'as'   => 'registro.actualiza'
 ]);
 
+
+Route::post('registrounu',[
+			'uses' => 'RegistroController@actualizanu',
+			'as'   => 'registro.actualizanu'
+]);
 
 Route::get('registro/{id}/destroy',[
 			'uses' => 'RegistroController@destroy',
